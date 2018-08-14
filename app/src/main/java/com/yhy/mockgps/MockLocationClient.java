@@ -120,14 +120,7 @@ public class MockLocationClient {
                     return;
                 }
 
-                totalForward += speed;
-                if(totalForward > maxForward){
-                    maxForward += speed;
-                    totalForward = 0d;
-                    direction++;
-                    direction %= 4;
-                }
-
+                checkDirection();
 
                 handler.postDelayed(this, 1000);
             }
@@ -153,6 +146,16 @@ public class MockLocationClient {
         }
     }
 
+
+    private void checkDirection(){
+        totalForward += speed;
+        if(totalForward > maxForward){
+            maxForward += speed;
+            totalForward = 0d;
+            direction++;
+            direction %= 4;
+        }
+    }
 
 
 
