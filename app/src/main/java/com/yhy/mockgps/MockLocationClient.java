@@ -13,7 +13,7 @@ import android.widget.Toast;
  * Created by hechengcheng on 2018/8/10
  */
 public class MockLocationClient {
-
+    private final double NaN = 0.0d/0.0;
     private double speed = 0.0002d;/* 100m/s */
     private LocationManager lm;
     private Context context;
@@ -102,8 +102,15 @@ public class MockLocationClient {
             @Override
             public void run() {
                 goDirection();
-                mlocation.setLongitude(longitude);
-                mlocation.setLatitude(latitude);
+                float accuracy = getAccuracy();
+                if(accuracy > 109f){
+                    mlocation.setLongitude(NaN);
+                    mlocation.setLatitude(NaN);
+                }else{
+                    mlocation.setLongitude(longitude);
+                    mlocation.setLatitude(latitude);
+                }
+
                 mlocation.setAltitude(getAltitude());
                 mlocation.setAccuracy(getAccuracy());
 
