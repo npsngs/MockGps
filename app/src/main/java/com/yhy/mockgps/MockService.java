@@ -5,6 +5,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 /**
  * Created by hechengcheng on 2018/8/8
@@ -43,7 +44,9 @@ public class MockService extends Service {
                 break;
             case "accuracy":
                 if (client != null){
-                    float accuracy = intent.getFloatExtra("accuracy", 1f);
+
+                    float accuracy = intent.getFloatExtra("accuracy", 10f);
+                    Log.e("accuracy", ""+accuracy);
                     client.setAccuracy(accuracy);
                 }
                 break;

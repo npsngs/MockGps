@@ -17,7 +17,7 @@ public class MockLocationClient {
     private double speed = 0.0002d;/* 100m/s */
     private LocationManager lm;
     private Context context;
-    private float accuracy = 1f;
+    private float accuracy = 10f;
     private double altitude = 10d;
     public MockLocationClient(Context context, String cmd) {
         this.context = context;
@@ -103,7 +103,7 @@ public class MockLocationClient {
             public void run() {
                 goDirection();
                 float accuracy = getAccuracy();
-                if(accuracy > 109f){
+                if(accuracy < 6f){
                     mlocation.setLongitude(NaN);
                     mlocation.setLatitude(NaN);
                 }else{

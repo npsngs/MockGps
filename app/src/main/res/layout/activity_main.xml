@@ -46,7 +46,7 @@
     <SeekBar
         android:id="@+id/gps_seekBar"
         android:max="120"
-        android:progress="3"
+        android:progress="10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
